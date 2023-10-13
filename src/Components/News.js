@@ -17,14 +17,18 @@ export default class News extends Component {
     pageSize: PropTypes.number
   }
 
+  capitalCase=(s)=>{
+return s.charAt(0).toUpperCase()+s.slice(1);
+  }
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       page: 1,
       loading: false
     };
+    document.title=`${this.capitalCase(this.props.category)} - NewsBanana`;
   }
 
   async newsUpdate(){
@@ -61,11 +65,10 @@ export default class News extends Component {
     return (
       <>
         <div className="container" data-bs-theme="dark">
-          <h1 className="text-center my-3">Latest News Feed</h1>
+          <h1 className="text-center my-3">Latest News Feed - {this.capitalCase(this.props.category)}</h1>
           {this.state.loading && <Spinner />}
           <div className="row">
             {!this.state.loading && this.state.articles.map((element) => {
-              console.log(element);
               return (
                 <div className="col-md-4" key={element.url}>
                   <NewsTile

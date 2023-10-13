@@ -38,6 +38,11 @@ export default class Navbar extends Component {
               <Link className="nav-link" to="/technology">Technology</Link>
             </li>
           </ul>
+          <form className="d-flex" role="search">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-success btn-sm" type="submit">Search</button>
+      </form>
+
         </div>
       </div>
     </nav>

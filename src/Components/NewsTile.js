@@ -13,7 +13,8 @@ export default class NewsTile extends Component {
             <p className="card-text">
             {this.props.description}
             </p>
-            <small class="text-body-secondary">{new Date(this.props.publishedAt).toGMTString()}</small>
+            <small className="text-body-secondary">{new Date(this.props.publishedAt).toGMTString()}</small>
+            <br/>
             <a href={this.props.url} target="_blank" rel="noreferrer" className="btn btn-primary btn-sm my-2">
               Read more
             </a>
