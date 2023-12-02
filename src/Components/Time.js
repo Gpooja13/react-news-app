@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Time() {
+const Time=()=> {
 const [time,setTime]=useState("");
 const [date,setDate]=useState("");
 
@@ -12,8 +12,8 @@ setTime(t)
 },1000);
 
   return (
-    <div className="text-center">
-    <div>{date}</div>
+    <div className="text-center" style={{fontSize:"2vh"}}>
+    <div >{date}</div>
     <div>{time}</div>
     </div>
   )
