@@ -1,8 +1,21 @@
-import React from 'react'
+import React,{useState} from 'react';
 import {Link} from "react-router-dom";
 import Time from "./Time";
 
 const Navbar =(props)=> {
+  // const [text, setText] = useState("");
+  // const [search, setSearch] = useState("");
+
+  // const getText = (e) => {
+  //   setText(e.target.value);
+  // };
+
+  // const submitSearch = (e) => {
+  //   e.preventDefault();
+  //   setSearch(text);
+  //   console.log(search);
+  // };
+  
     return (
       <div>
         <nav className="navbar fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -27,6 +40,9 @@ const Navbar =(props)=> {
            <li className="nav-item mx-2">
               <Link className="nav-link" to="/health">Health</Link>
             </li>
+            <li className="nav-item mx-2">
+              <Link className="nav-link" to="/politics">Politics</Link>
+            </li>
            <li className="nav-item mx-2">
              <Link className="nav-link" to="/science">Science</Link>
             </li>
@@ -36,14 +52,20 @@ const Navbar =(props)=> {
            <li className="nav-item mx-2">
               <Link className="nav-link" to="/technology">Technology</Link>
             </li>
-            <li className="nav-item" style={{marginLeft:"20vw"}}>
+           <li className="nav-item mx-2">
+              <Link className="nav-link" to="/world">World</Link>
+            </li>
+            <li className="nav-item" style={{marginLeft:"15vw"}}>
               <Time/>
             </li>
           </ul>
-          {/* <form className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-success btn-sm" type="submit">Search</button>
-      </form> */}
+
+
+          {/* <div className="d-flex" role="search" >
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={getText}/>
+       <Button to="search">Search</Button> 
+      </div> */}
+
 
         </div>
       </div>

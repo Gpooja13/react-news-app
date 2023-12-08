@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NewsTile from "./NewsTile";
 import Spinner from "./Spinner";
-import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroller";
 
 const News = (props) => {
@@ -17,13 +16,14 @@ const News = (props) => {
   document.title = `${capitalCase(props.category)} - NewsBanana`;
 
   const newsUpdate = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    const url = `https://newsdata.io/api/1/news?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&size=${props.pageSize}&language=${props.language}`;
     setLoading(true);
     let data = await fetch(url);
     let parsedData = await data.json();
-    setArticles(parsedData.articles);
+    setArticles(parsedData.results);
     setTotalResults(parsedData.totalResults);
     setLoading(false);
+    setPage(parsedData.nextPage);
   };
 
   useEffect(() => {
@@ -34,17 +34,17 @@ const News = (props) => {
     if (loading) {
       return;
     }
-    setPage((prevPage) => prevPage + 1);
     setLoading(true);
 
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page + 1}&pageSize=${props.pageSize}`;
+    const url = `https://newsdata.io/api/1/news?country=${props.country}&language=${props.language}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&size=${props.pageSize}`;
 
     try {
       let data = await fetch(url);
       let parsedData = await data.json();
-      setArticles((prev) => [...prev, ...parsedData.articles]);
+      setArticles((prev) => [...prev, ...parsedData.results]);
       setTotalResults(parsedData.totalResults);
       setLoading(false);
+      setPage(parsedData.nextPage);
     } catch (error) {
       console.error("Error fetching data:", error);
       setLoading(false);
@@ -72,20 +72,21 @@ const News = (props) => {
         >
           <div className="container">
             <div className="row">
-              {articles.map((element) => {
-                return (
-                  <div className="col-md-4" key={element.url}>
+              {Array.isArray(articles) &&
+                articles.map((element) => (
+                  <div className="col-md-4" key={element.article_id}>
                     <NewsTile
                       title={element.title ? element.title : ""}
-                      description={element.description ? element.description : ""}
-                      imageURL={element.urlToImage}
-                      url={element.url}
-                      publishedAt={element.publishedAt}
-                      source={element.source}
+                      description={
+                        element.description ? element.description : ""
+                      }
+                      image_url={element.image_url}
+                      link={element.link}
+                      pubDate={element.pubDate}
+                      source_id={element.source_id}
                     />
                   </div>
-                );
-              })}
+                ))}
             </div>
           </div>
         </InfiniteScroll>
@@ -97,12 +98,14 @@ const News = (props) => {
 News.defaultProps = {
   country: "in",
   pageSize: "6",
-  apiKey: "995df160b89b41f6b99a7e79620fe41b",
+  category: "top",
+  language: "en",
+  apiKey: process.env.REACT_APP_NEWS_API,
 };
 
-News.propTypes = {
-  country: PropTypes.string,
-  pageSize: PropTypes.number,
-};
+// News.propTypes = {
+//   country: PropTypes.string,
+//   pageSize: PropTypes.number,
+// };
 
 export default News;
