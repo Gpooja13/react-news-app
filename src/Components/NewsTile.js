@@ -14,7 +14,7 @@ const NewsTile = (props) => {
         <img
           src={props.image_url ? props.image_url : "Images/news1.png"}
           className="card-img-top"
-          alt="..."
+          alt="URL not found"
           style={{ height: "30vh" }}
         />
         <div className="card-body">

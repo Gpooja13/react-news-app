@@ -2,3 +2,7 @@ body{
   background-color: rgb(70, 63, 63);
   color: white;
 }
+
+.pos{
+  margin:11vh 0 2vh 0;
+}

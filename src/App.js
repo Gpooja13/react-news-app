@@ -18,7 +18,7 @@ const App = () => {
         <Routes>
           <Route
             exact
-            path="/"
+            path="/react-news-app/"
             element={
               <News
                 pageSize={pageSize}
@@ -32,7 +32,7 @@ const App = () => {
           ></Route>
           <Route
             exact
-            path="/business"
+            path="/react-news-app/business"
             element={
               <News
                 pageSize={pageSize}
@@ -46,7 +46,7 @@ const App = () => {
           ></Route>
           <Route
             exact
-            path="/entertainment"
+            path="/react-news-app/entertainment"
             element={
               <News
                 pageSize={pageSize}
@@ -60,7 +60,7 @@ const App = () => {
           ></Route>
           <Route
             exact
-            path="/health"
+            path="/react-news-app/health"
             element={
               <News
                 pageSize={pageSize}
@@ -74,7 +74,7 @@ const App = () => {
           ></Route>
           <Route
             exact
-            path="/politics"
+            path="/react-news-app/politics"
             element={
               <News
                 pageSize={pageSize}
@@ -88,7 +88,7 @@ const App = () => {
           ></Route>
           <Route
             exact
-            path="/science"
+            path="/react-news-app/science"
             element={
               <News
                 pageSize={pageSize}
@@ -102,7 +102,7 @@ const App = () => {
           ></Route>
           <Route
             exact
-            path="/sports"
+            path="/react-news-app/sports"
             element={
               <News
                 pageSize={pageSize}
@@ -116,7 +116,7 @@ const App = () => {
           ></Route>
           <Route
             exact
-            path="/technology"
+            path="/react-news-app/technology"
             element={
               <News
                 pageSize={pageSize}
@@ -130,7 +130,7 @@ const App = () => {
           ></Route>
           <Route
             exact
-            path="/world"
+            path="/react-news-app/world"
             element={
               <News
                 pageSize={pageSize}

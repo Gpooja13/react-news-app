@@ -53,7 +53,7 @@ const News = (props) => {
 
   return (
     <>
-      <h1 className="text-center my-3">
+      <h1 className="text-center pos">
         Latest News Feed - {capitalCase(props.category)}
       </h1>
       {loading && <Spinner />}
