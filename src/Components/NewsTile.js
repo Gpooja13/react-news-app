@@ -2,6 +2,7 @@ import React from "react";
 
 const NewsTile = (props) => {
   const n = 245 - props.title.length;
+
   return (
     <div className="container">
       <div className="card my-3">
@@ -21,9 +22,10 @@ const NewsTile = (props) => {
           <h5 className="card-title">{props.title}</h5>
 
           <p className="card-text">
-            {props.description.length > n
+            {(props.description)?(props.description.length > n
               ? props.description.substring(0, n) + "..."
-              : props.description}
+              : props.description):(props.content.length>n?props.content.substring(0, n) + "..."
+              : props.content)}
           </p>
 
           <div className="d-flex justify-content-between align-items-center">

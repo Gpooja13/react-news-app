@@ -84,6 +84,7 @@ const News = (props) => {
                       link={element.link}
                       pubDate={element.pubDate}
                       source_id={element.source_id}
+                      content={element.content}
                     />
                   </div>
                 ))}
