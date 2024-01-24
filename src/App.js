@@ -1,17 +1,21 @@
 import "./App.css";
+import {useState } from "react";
 import Navbar from "./Components/Navbar";
 import News from "./Components/News";
 import Footer from "./Components/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import searchContext from "./context/searchContext";
 
 const App = () => {
-
+const [search, setSearch] = useState()
   const pageSize = 6;
   const apiKey = process.env.REACT_APP_NEWS_API;
 
+console.log(search)
   return (
     <div>
       <Router>
+      <searchContext.Provider value={setSearch}>
         <Navbar
           title="NewsBanana"
         />
@@ -120,7 +124,7 @@ const App = () => {
             element={
               <News
                 pageSize={pageSize}
-                key="technolog"
+                key="technology"
                 country="in"
                 category="technology"
                 language="en"
@@ -142,8 +146,23 @@ const App = () => {
               />
             }
           ></Route>
+          <Route
+            exact
+            path="/react-news-app/search"
+            element={
+              <News
+                pageSize={pageSize}
+                key="search"
+                country="in"
+                language="en"
+                apiKey={apiKey}
+                query={search}
+              />
+            }
+          ></Route>
 
         </Routes>
+        </searchContext.Provider>
       </Router>
       <Footer />
     </div>

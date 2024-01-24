@@ -21,7 +21,7 @@ const NewsTile = (props) => {
         <div className="card-body">
           <h5 className="card-title">{props.title}</h5>
 
-          <p className="card-text">
+          <p className="card-text" style={{height:"96px",overflow:"clip"}}>
             {(props.description)?(props.description.length > n
               ? props.description.substring(0, n) + "..."
               : props.description):(props.content.length>n?props.content.substring(0, n) + "..."

@@ -16,7 +16,10 @@ const News = (props) => {
   document.title = `${capitalCase(props.category)} - NewsBanana`;
 
   const newsUpdate = async () => {
-    const url = `https://newsdata.io/api/1/news?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&size=${props.pageSize}&language=${props.language}`;
+    const url =
+      (props.query)
+        ? `https://newsdata.io/api/1/news?country=${props.country}&apiKey=${props.apiKey}&size=${props.pageSize}&language=${props.language}&q=${props.query}`
+        : `https://newsdata.io/api/1/news?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&size=${props.pageSize}&language=${props.language}`;
     setLoading(true);
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -28,7 +31,7 @@ const News = (props) => {
 
   useEffect(() => {
     newsUpdate();
-  }, []);
+  }, [props.query]);
 
   const loadFunc = async () => {
     if (loading) {
@@ -53,7 +56,7 @@ const News = (props) => {
 
   return (
     <>
-      <h1 className="text-center pos">
+      <h1 className="text-center pos" >
         Latest News Feed - {capitalCase(props.category)}
       </h1>
       {loading && <Spinner />}
