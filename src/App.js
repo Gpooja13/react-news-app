@@ -8,8 +8,8 @@ import searchContext from "./context/searchContext";
 
 const App = () => {
 const [search, setSearch] = useState()
-  const pageSize = 6;
-  const apiKey = process.env.REACT_APP_NEWS_API;
+const pageSize = 6;
+const apiKey = process.env.REACT_APP_NEWS_API || 'pub_34185c1e5b9473c99e455111de700240e1a4a';
 
 console.log(search)
   return (
